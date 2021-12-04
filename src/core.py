@@ -92,7 +92,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.command == 'preprocess':
-    preprocess(
+        preprocess(
         args.dataroot, args.force, args.split, args.split_name, args.width,
         args.height)
     elif args.command == 'train':

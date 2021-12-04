@@ -4,7 +4,7 @@ from torch import nn
 from .block import FCBlocks
 from .encoder import CNNEncoder, ResNetEncoder, DUDAEncoder, BCNNEncoder
 from .decoder import TransformationDecoder
-
+from .vision_transformer import vit_small, vit_base
 
 class TranceNet(nn.Module):
     def __init__(
@@ -173,3 +173,13 @@ class BCNN(TranceNet):
         img_feat = self.encoder(init, fin)
         h0 = self.fc(img_feat).unsqueeze(0)
         return h0
+
+class ConcatViT(TranceNet):
+    def __init__(self, *args, arch="vit_small", **kwargs):
+        encoder = vit_small(patch_size=20, img_size=[240, 160])
+        super().__init__(encoder, *args, **kwargs)
+        
+class ConcatViTBase(TranceNet):
+    def __init__(self, *args, arch="vit_base", **kwargs):
+        encoder = vit_base(patch_size=20, img_size=[240, 160])
+        super().__init__(encoder, *args, **kwargs)

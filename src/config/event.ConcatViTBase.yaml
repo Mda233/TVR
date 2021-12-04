@@ -1,16 +1,16 @@
-version: event.BCNN  # Version of config file.
-date: '2021-03-06'  # Creation date of this file.
+version: event.ConcatViTBase  # Version of config file.
+date: '2021-11-30'  # Creation date of this file.
 
 runner: EventRunner  # Class name of executor.
 recorder: EventRecorder  # Class name of recorder.
 data: event  # Name of the dataset.
 seed: 2021  # Random seed.
 
-device: 'cuda:1'  # Device used to deploy model.
+device: 'cuda:3'  # Device used to deploy model.
 epochs: 50  # Total epochs of training.
 
 # == Model ==
-model: BCNN  # Name of model class.
+model: ConcatViTBase  # Name of model class.
 model_args:  # Assignment of model parameters.
   height: 120
   width: 160
@@ -19,12 +19,12 @@ model_args:  # Assignment of model parameters.
   c_pair_embed: 8
   max_step: 4
   c_hidden: [128]
-  arch: 'vgg11_bn'
+  arch: 'vit_small'
   fc_img_en: [128]
   fc_fusion: [128]
 
 # == Optimizer ==
-optimizer: Adam  # Name of optimizer class.
+optimizer: AdamW  # Name of optimizer class.
 optimizer_args:  # Assignment of optimizer parameters.
   lr: 0.001
 lr_scheduler: StepLR
@@ -47,8 +47,8 @@ data_args_default: &data_args_default
   img_aug: false
   move_out_aug: false
 data_loader_args_default: &data_loader_args_default
-  batch_size: 128
-  num_workers: 8
+  batch_size: 112
+  num_workers: 12
   pin_memory: true
   shuffle: false
 
@@ -78,43 +78,9 @@ test_data_loader_args:
 output_root: '../train_log/TVR'  # Location to put train logs.
 log_steps: 10  # Step interval of standard output.
 # (Auto changed variables)
-log_dir: '../train_log/TVR/event/2021-03-06.event.BCNN/log'                                        # Full path of log dir
-ckpt_dir: '../train_log/TVR/event/2021-03-06.event.BCNN/ckpt'                                        # Full path of checkpoint dir
-tb_dir: '../train_log/TVR/event/2021-03-06.event.BCNN/tb'                                        # Full path of tensorboard dir
-result_path: '../train_log/TVR/event/2021-03-06.event.BCNN/result/result.json'
+log_dir: '../train_log/TVR/event/2021-11-30.event.ConcatViTBase/log'                                # Full path of log dir
+ckpt_dir: '../train_log/TVR/event/2021-11-30.event.ConcatViTBase/ckpt'                                # Full path of checkpoint dir
+tb_dir: '../train_log/TVR/event/2021-11-30.event.ConcatViTBase/tb'                                # Full path of tensorboard dir
+result_path: '../train_log/TVR/event/2021-11-30.event.ConcatViTBase/result/result.json'
 
 # == Testing Results ==
-result:
-  version: event.BCNN
-  ckpt: best
-  model_size: 40.9M
-  time: '2021-12-03 13:21:05'
-  loss: 18.692899856567383
-  loss_obj: 3.0758326095581054
-  loss_pair: 15.617067276000977
-  acc: 0.6059
-  loose_acc: 0.63215
-  avg_dist: 0.96565
-  avg_norm_dist: 0.30449584188461304
-  avg_step_diff: -0.04615
-  step_result:
-    1:
-      acc: 0.9458
-      loose_acc: 0.9658
-      avg_dist: 0.0556
-      avg_norm_dist: 0.0556
-    2:
-      acc: 0.7418
-      loose_acc: 0.776
-      avg_dist: 0.4464
-      avg_norm_dist: 0.2232
-    3:
-      acc: 0.4788
-      loose_acc: 0.51
-      avg_dist: 1.1884
-      avg_norm_dist: 0.3961333391010761
-    4:
-      acc: 0.2572
-      loose_acc: 0.2768
-      avg_dist: 2.1722
-      avg_norm_dist: 0.54305

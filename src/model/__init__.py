@@ -13,5 +13,7 @@ from .trancenet import (
     SubtractCNN,
     SubtractResNet,
     DUDA,
-    BCNN
+    BCNN,
+    ConcatViT,
+    ConcatViTBase
 )

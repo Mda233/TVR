@@ -6,7 +6,7 @@ recorder: EventRecorder  # Class name of recorder.
 data: event  # Name of the dataset.
 seed: 2021  # Random seed.
 
-device: 'cuda:0'  # Device used to deploy model.
+device: 'cuda:0'         # Device used to deploy model.
 epochs: 50  # Total epochs of training.
 
 # == Model ==
@@ -84,3 +84,37 @@ tb_dir: '../train_log/TVR/event/2021-03-06.event.ConcatResNet/tb'               
 result_path: '../train_log/TVR/event/2021-03-06.event.ConcatResNet/result/result.json'
 
 # == Testing Results ==
+result:
+  version: event.ConcatResNet
+  ckpt: best
+  model_size: 10.8M
+  time: '2021-11-28 00:39:20'
+  loss: 15.336474983215332
+  loss_obj: 3.265509968185425
+  loss_pair: 12.070964990234375
+  acc: 0.621
+  loose_acc: 0.64955
+  avg_dist: 1.0009
+  avg_norm_dist: 0.31182084083557127
+  avg_step_diff: -0.04605
+  step_result:
+    1:
+      acc: 0.9562
+      loose_acc: 0.9758
+      avg_dist: 0.0462
+      avg_norm_dist: 0.0462
+    2:
+      acc: 0.773
+      loose_acc: 0.8094
+      avg_dist: 0.4316
+      avg_norm_dist: 0.2158
+    3:
+      acc: 0.4954
+      loose_acc: 0.5304
+      avg_dist: 1.246
+      avg_norm_dist: 0.41533333869576455
+    4:
+      acc: 0.2594
+      loose_acc: 0.2826
+      avg_dist: 2.2798
+      avg_norm_dist: 0.56995
